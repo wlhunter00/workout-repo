@@ -1,7 +1,47 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="manifest" href="manifest.webmanifest"><meta name="theme-color" content="#16181d"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black"><meta name="apple-mobile-web-app-title" content="Workouts"><link rel="apple-touch-icon" href="icon-180.png">
-<title>Will's Workout Log</title><style>body{margin:0;font:17px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;background:#f6f7f9;color:#16181d}
-header{background:#16181d;color:#fff;padding:22px 18px}h1{margin:0;font-size:1.5rem}header p{margin:2px 0 0;color:#c9ced6;font-size:.95rem}main{max-width:640px;margin:0 auto;padding:12px 14px 40px}
-h2{font-size:1.05rem;color:#5f6672;margin:24px 4px 4px}
-a.w{display:block;background:#fff;border-radius:14px;padding:14px 16px;margin:12px 0;text-decoration:none;color:inherit;box-shadow:0 1px 3px rgba(0,0,0,.08)}
-a.w b{display:block;font-size:1.1rem}.d{display:block;color:#1f6feb;font-weight:700;font-size:.9rem}.m{display:block;color:#5f6672;font-size:.9rem}.x{display:block;color:#5f6672;font-size:.85rem;margin-top:4px}</style></head>
-<body><header><h1>Will's Workout Log</h1><p>Newest first · tap a day to open it <span id="offl" hidden style="background:#dff3e4;color:#1a7f37;border-radius:10px;padding:1px 8px;font-size:.8rem">Available offline ✓</span></p></header><main><a class="w" href="2026-10-31.html"><span class="d">Sat Oct 31, 2026</span><b>Full body machines, first session back</b><span class="m">~45 min · 9 exercises</span><span class="x">Bike + cat cow warmup · Leg press · Lat pulldown · Chest press · Seated row · Leg curl (lying) · Dead bug · Cable Pallof press · Optional incline walk</span></a><h2>Sample</h2><a class="w" href="sample-workout.html"><span class="d">Sample</span><b>Full body + core (template)</b><span class="m">~50–55 min · 9 exercises</span><span class="x">Bike + PT warmup · PT core block · Leg press · Leg curl · Lat pulldown · Row · Chest press · Glute bridge · Incline walk</span></a></main><script>if("serviceWorker" in navigator)navigator.serviceWorker.register("sw.js",{scope:"./"}).then(()=>navigator.serviceWorker.ready).then(async()=>{for(let i=0;i<10;i++){if(await caches.match("index.html")){document.getElementById("offl").hidden=false;return}await new Promise(r=>setTimeout(r,800))}}).catch(()=>{})</script></body></html>
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><link rel="manifest" href="manifest.webmanifest"><meta name="theme-color" content="#16181d"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black"><meta name="apple-mobile-web-app-title" content="Workouts"><link rel="apple-touch-icon" href="icon-180.png"><title>Will's Workouts</title><style>
+body{margin:0;font:17px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;background:#f6f7f9;color:#16181d}
+header{background:#16181d;color:#fff;padding:calc(18px + env(safe-area-inset-top)) 18px 18px}h1{margin:0;font-size:1.5rem}header p{margin:2px 0 0;color:#c9ced6;font-size:.9rem}
+main{max-width:640px;margin:0 auto;padding:6px 14px 40px}h2{font-size:.85rem;text-transform:uppercase;letter-spacing:.05em;color:#5f6672;margin:22px 4px 4px}
+.stats{display:flex;gap:8px;margin-top:14px}.stats div{flex:1;background:#fff;border-radius:14px;padding:10px;text-align:center;box-shadow:0 1px 3px rgba(0,0,0,.08)}.stats b{display:block;font-size:1.5rem}.stats span{font-size:.75rem;color:#5f6672}
+a.w{display:block;background:#fff;border-radius:14px;padding:14px 16px;margin:10px 0;text-decoration:none;color:inherit;box-shadow:0 1px 3px rgba(0,0,0,.08)}
+a.w.next{background:#1f6feb;color:#fff}a.w.next .d,a.w.next .m,a.w.next .x{color:#e6efff}
+a.w b{display:block;font-size:1.1rem}.d{display:block;color:#1f6feb;font-weight:700;font-size:.9rem}.m{display:block;color:#5f6672;font-size:.9rem}.x{display:block;color:#5f6672;font-size:.82rem;margin-top:4px}
+.chip{float:right;font-size:.75rem;font-weight:700;border-radius:10px;padding:1px 8px;background:#eef1f5;color:#5f6672}.chip.ok{background:#dff3e4;color:#1a7f37}.chip.pl{background:#e6efff;color:#1f6feb}
+.empty{color:#5f6672;font-size:.92rem;margin:6px 4px}</style></head>
+<body><header><h1>Will's Workouts</h1><p>Plans, history and progress <span id="offl" hidden style="background:#dff3e4;color:#1a7f37;border-radius:10px;padding:1px 8px;font-size:.8rem">Offline ready ✓</span></p></header>
+<main><div class="stats"><div><b id="s-wk">0</b><span>This week</span></div><div><b id="s-mo">0</b><span>This month</span></div><div><b id="s-st">0</b><span>Week streak</span></div><div><b id="s-sets">–</b><span>Sets logged</span></div></div>
+<h2>Next up</h2><div id="next"></div><h2>Upcoming</h2><div id="up"></div><h2>History</h2><div id="hist"></div>
+<h2>Sample</h2><a class="w" href="sample-workout.html"><span class="d">Template</span><b>Full body + core (template)</b></a>
+<noscript><a class="w" href="2026-10-31.html"><span class="d">Sat Oct 31</span><b>Full body machines, first session back</b></a></noscript></main>
+<script>
+var D=[{"date": "2026-10-31", "file": "2026-10-31.html", "title": "Full body machines, first session back", "duration": "~45 min", "focus": "Full body", "status": "done", "n": 9, "ex": "Bike + cat cow warmup \u00b7 Leg press \u00b7 Lat pulldown \u00b7 Chest press \u00b7 Seated row \u00b7 Leg curl (lying) \u00b7 Dead bug \u00b7 Cable Pallof press \u00b7 Optional incline walk"}],EP="https://script.google.com/macros/s/AKfycbw3zvmr3KX50QEQBek5wFh6nYUrF64WzEDo9IAjz14H01dTLqkdPIgvJN-tQ8vXPLC5wA/exec",LOGGED={};
+function iso(d){return d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0")}
+var now=new Date(),td=iso(now);
+function esc(s){return String(s==null?"":s).replace(/[&<>"]/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})}
+function done(x){return x.status=="done"||!!LOGGED[x.date]}
+function card(x,cls){var d=new Date(x.date+"T12:00"),ok=done(x),pl=!ok&&(x.status=="planned"||x.date>=td);
+ var chip=ok?'<span class="chip ok">✓ Done'+(LOGGED[x.date]?' · '+LOGGED[x.date]+' sets':'')+'</span>':pl?'<span class="chip pl">Planned</span>':'<span class="chip">Not logged</span>';
+ return '<a class="w'+(cls?' '+cls:'')+'" href="'+esc(x.file)+'">'+chip+'<span class="d">'+d.toLocaleDateString("en-US",{weekday:"short",month:"short",day:"numeric",year:"numeric"})+'</span><b>'+esc(x.title)+'</b><span class="m">'+esc(x.duration||"")+(x.focus?' · '+esc(x.focus):'')+' · '+x.n+' exercises</span><span class="x">'+esc(x.ex)+'</span></a>'}
+function render(){
+ var up=D.filter(function(x){return !done(x)&&(x.status=="planned"||x.date>=td)}).sort(function(a,b){return a.date<b.date?-1:1});
+ var hist=D.filter(function(x){return up.indexOf(x)<0}).sort(function(a,b){return a.date<b.date?1:-1});
+ var nx=up[0];
+ document.getElementById("next").innerHTML=nx?card(nx,"next"):'<p class="empty">Nothing planned yet. Tell your trainer how you feel and a workout will show up here.</p>';
+ document.getElementById("up").innerHTML=up.slice(1).map(function(x){return card(x)}).join("")||'<p class="empty">No other workouts scheduled.</p>';
+ document.getElementById("hist").innerHTML=hist.map(function(x){return card(x)}).join("")||'<p class="empty">No workouts yet.</p>';
+ var dd=hist.filter(done).map(function(x){return x.date});
+ var ws=new Date(now);ws.setDate(now.getDate()-((now.getDay()+6)%7));var wsI=iso(ws),moI=td.slice(0,8)+"01";
+ document.getElementById("s-wk").textContent=dd.filter(function(d){return d>=wsI&&d<=td}).length;
+ document.getElementById("s-mo").textContent=dd.filter(function(d){return d>=moI&&d<=td}).length;
+ var st=0,s=new Date(ws);function has(a){var b=new Date(a);b.setDate(a.getDate()+6);var A=iso(a),B=iso(b);return dd.some(function(d){return d>=A&&d<=B})}
+ if(!has(s))s.setDate(s.getDate()-7);while(has(s)){st++;s.setDate(s.getDate()-7)}
+ document.getElementById("s-st").textContent=st;
+}
+try{var c=JSON.parse(localStorage.getItem("home-logged")||"null");if(c){LOGGED=c.l;document.getElementById("s-sets").textContent=c.n}}catch(_){}
+render();
+if(EP&&navigator.onLine!==false){var ac=new AbortController();setTimeout(function(){ac.abort()},8000);
+ fetch(EP+"?tab=Sets",{signal:ac.signal}).then(function(r){return r.json()}).then(function(j){if(!j||!j.ok)return;var l={},n=0;
+  (j.rows||[]).forEach(function(r){var v=r.done;if(v===false||v==="false"||v==="FALSE")return;var d=String(r.workout_date||"").slice(0,10);if(!/^\d{4}-/.test(d))return;l[d]=(l[d]||0)+1;n++});
+  LOGGED=l;document.getElementById("s-sets").textContent=n;try{localStorage.setItem("home-logged",JSON.stringify({l:l,n:n}))}catch(_){}render()}).catch(function(){})}
+if("serviceWorker" in navigator)navigator.serviceWorker.register("sw.js",{scope:"./"}).then(function(){return navigator.serviceWorker.ready}).then(async function(){for(let i=0;i<10;i++){if(await caches.match("index.html")){document.getElementById("offl").hidden=false;return}await new Promise(function(r){setTimeout(r,800)})}}).catch(function(){});
+</script></body></html>
