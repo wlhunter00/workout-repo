@@ -1,5 +1,5 @@
 // Offline support for Will's workout site. Version bumps whenever pages change.
-const CACHE = "workouts-f4e06c6f72";
+const CACHE = "workouts-e6e69e4346";
 const PRECACHE = ["./", "index.html", "manifest.webmanifest", "icon-180.png", "icon-192.png", "icon-512.png", "2026-10-31.html", "sample-workout.html"];
 self.addEventListener("install", e => {
   e.waitUntil(caches.open(CACHE).then(c => Promise.all(PRECACHE.map(u => c.add(new Request(u, {cache: "reload"})).catch(() => {})))).then(() => self.skipWaiting()));
