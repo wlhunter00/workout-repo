@@ -198,4 +198,19 @@ const upd=()=>{const i=Math.round(t.scrollLeft/t.clientWidth);ds.forEach((d,j)=>
 t.addEventListener("scroll",()=>requestAnimationFrame(upd),{passive:true});ds.forEach((d,j)=>d.onclick=()=>t.scrollTo({left:j*t.clientWidth,behavior:"smooth"}));upd()});
 render();
 if("serviceWorker" in navigator&&location.protocol==="https:"||location.hostname==="localhost"||location.hostname==="127.0.0.1"){navigator.serviceWorker&&navigator.serviceWorker.register("sw.js",{scope:"./"}).then(()=>navigator.serviceWorker.ready).then(async()=>{for(let i=0;i<10;i++){if(await caches.match(location.href.split("#")[0],{ignoreSearch:true})){const b=document.getElementById("offl");if(b)b.hidden=false;return}await new Promise(r=>setTimeout(r,800))}}).catch(()=>{})}
-</script></body></html>
+</script><!--WNAV--><style id="wnav-css">body{padding-bottom:calc(72px + env(safe-area-inset-bottom))}
+#wnav{position:fixed;left:0;right:0;bottom:0;z-index:50;background:#16181d;display:flex;padding:6px 6px calc(6px + env(safe-area-inset-bottom))}
+#wnav a,#wnav button{flex:1;background:none;border:0;color:#c9ced6;font:600 .78rem -apple-system,BlinkMacSystemFont,sans-serif;text-decoration:none;display:flex;flex-direction:column;align-items:center;gap:2px;padding:4px 0}
+#wnav .ic{font-size:1.3rem;line-height:1}#wnav .off{opacity:.3;pointer-events:none}
+#wsheet{position:fixed;inset:0;z-index:60;background:rgba(0,0,0,.45);display:none}#wsheet.open{display:block}
+#wsheet .pn{position:absolute;left:0;right:0;bottom:0;max-height:75vh;overflow:auto;background:#f6f7f9;border-radius:18px 18px 0 0;padding:14px 14px calc(20px + env(safe-area-inset-bottom));font:16px/1.4 -apple-system,BlinkMacSystemFont,sans-serif;color:#16181d}
+#wsheet h4{margin:14px 4px 6px;color:#5f6672;font-size:.85rem;text-transform:uppercase;letter-spacing:.04em}
+#wsheet a{display:block;background:#fff;border-radius:12px;padding:10px 14px;margin:6px 0;text-decoration:none;color:inherit}#wsheet a.cur{outline:2px solid #1f6feb}
+#wsheet a small{display:block;color:#5f6672}#wsheet .x{float:right;background:none;border:0;font-size:1.5rem}</style><nav id="wnav" aria-label="Workouts"><a href="./"><span class="ic">⌂</span>Home</a><a class="off"><span class="ic">‹</span>Previous</a><button type="button" id="wmenu" aria-label="All workouts"><span class="ic">☰</span>Workouts</button><a class="off"><span class="ic">›</span>Next</a></nav>
+<div id="wsheet"><div class="pn"><button class="x" aria-label="Close">×</button><b>Workouts</b><div id="wlist"></div></div></div>
+<script>(function(){var D=[{"date": "2026-10-31", "file": "2026-10-31.html", "title": "Full body machines, first session back", "duration": "~45 min", "focus": "Full body", "status": "done", "n": 9, "ex": "Bike + cat cow warmup \u00b7 Leg press \u00b7 Lat pulldown \u00b7 Chest press \u00b7 Seated row \u00b7 Leg curl (lying) \u00b7 Dead bug \u00b7 Cable Pallof press \u00b7 Optional incline walk"}],S=[{"file": "sample-workout.html", "title": "Full body + core (template)"}],cur="2026-10-31.html";
+var t=new Date(),td=t.getFullYear()+"-"+String(t.getMonth()+1).padStart(2,"0")+"-"+String(t.getDate()).padStart(2,"0");
+function L(x){var d=new Date(x.date+"T12:00");return '<a href="'+x.file+'"'+(x.file==cur?' class="cur"':'')+'>'+d.toLocaleDateString("en-US",{weekday:"short",month:"short",day:"numeric"})+" · "+x.title+'<small>'+(x.duration||"")+(x.status=="done"?" · ✓ done":"")+'</small></a>'}
+var up=D.filter(function(x){return x.status=="planned"||x.date>td}),hi=D.filter(function(x){return up.indexOf(x)<0}).reverse();
+document.getElementById("wlist").innerHTML='<h4>Upcoming</h4>'+(up.length?up.map(L).join(""):'<small>Nothing planned yet</small>')+'<h4>History</h4>'+(hi.length?hi.map(L).join(""):'<small>No workouts yet</small>')+(S.length?'<h4>Sample</h4>'+S.map(function(s){return '<a href="'+s.file+'"'+(s.file==cur?' class="cur"':'')+'>'+s.title+'</a>'}).join(""):"");
+var sh=document.getElementById("wsheet");document.getElementById("wmenu").onclick=function(){sh.classList.add("open")};sh.onclick=function(ev){if(ev.target==sh||ev.target.classList.contains("x"))sh.classList.remove("open")};})();</script><!--/WNAV--></body></html>
